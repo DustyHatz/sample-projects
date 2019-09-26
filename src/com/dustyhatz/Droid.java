@@ -45,7 +45,7 @@ public class Droid {
     // Main method
     public static void main(String[] args) {
         // Create a new droid, Carl
-        Droid carl = new Droid("Codey");
+        Droid carl = new Droid("Carl");
 
         // Initiate Carl and begin performing tasks
         System.out.println(carl);
