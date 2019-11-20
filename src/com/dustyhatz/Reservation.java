@@ -17,7 +17,7 @@ public class Reservation {
         restaurantCapacity = capacity;
         isRestaurantOpen = open;
     }
-
+    // Method for confirming a reservation
     public void confirmReservation() {
         if (restaurantCapacity >= guestCount && guestCount <= 8 && guestCount > 1 && isRestaurantOpen) {
             System.out.println("Reservation confirmed");
@@ -36,9 +36,10 @@ public class Reservation {
         }
     }
 
+    // Main method
     public static void main(String[] args) {
 
-        Reservation partyOfTwo = new Reservation(7, 7, true);
+        Reservation partyOfTwo = new Reservation(2, 7, true);
         partyOfTwo.confirmReservation();
         partyOfTwo.informUser();
     }
