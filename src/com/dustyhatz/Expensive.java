@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class MostExpensive {
+class Expensive {
 
     public static void main(String[] args) {
         ArrayList<Double> expenses = new ArrayList<Double>();
