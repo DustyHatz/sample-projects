@@ -1,3 +1,5 @@
+// Basic example of using a for loop to find the most expensive and least expensive prices in a list.
+
 import java.util.ArrayList;
 
 class Expensive {
@@ -12,7 +14,9 @@ class Expensive {
         expenses.add(149.99);
         expenses.add(29.99);
 
+        // Initialize the most expensive starting value at 0
         double mostExpensive = 0;
+        // Initialize the least expensive starting value assuming you know the largest amount in the list
         double leastExpensive = 200;
 
         for (double expense : expenses) {
