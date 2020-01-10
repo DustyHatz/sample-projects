@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Get DNA strand from user
+        // Get DNA strand from input
         // Example "ATTAATATGTACTGA"
         String dna;
         Scanner input = new Scanner(System.in);
