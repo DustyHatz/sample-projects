@@ -3,6 +3,9 @@
 # Calculates the cheapest of the three options
 
 
+# Get package weight from user
+weight = float(input("Weight of package: "))
+
 # Define function to calculate cost of Ground Shipping based on package weight
 # Cost is a flat rate of $20 plus the price per pound of package weight
 def gs(weight):
@@ -62,12 +65,14 @@ def cheapest_shipping(weight):
 
 
 # Print the cost of Ground Shipping for a 4.8lb package
-print(gs(4.8))
+print(f"Ground Shipping costs ${gs(weight)} for a {weight} pound package.")
 
 # Print the cost of Drone Shipping for a 4.8lb package
-print(ds(4.8))
+print(f"Drone Shipping costs ${ds(weight)} for a {weight} pound package.")
+
+print(f"Premiun Shipping costs ${ps} for a {weight} pound package.")
 
 # Print the cheapest shipping option for a 4.8lb package
-print(cheapest_shipping(4.8))
+print(cheapest_shipping(weight))
 
 
