@@ -1,4 +1,4 @@
-# Basic shipping cost program
+# Basic shipping calculator
 # Calculates the separate costs of three different shipping options
 # Calculates the cheapest of the three options
 
