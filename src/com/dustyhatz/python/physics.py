@@ -1,4 +1,4 @@
-# This program defines multiple functions to  help calculate some fundamental physics properties.
+# This program defines multiple functions to help calculate some fundamental physics properties.
 
 # Example data
 train_mass = 22680
