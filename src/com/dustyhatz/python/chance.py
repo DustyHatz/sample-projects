@@ -94,7 +94,6 @@ def high_card(bet):
     print("ERROR: You do not have enough money to place bet!")
 
   else:
-
     # Create deck of cards
     deck = list(range(1, 53))
 
@@ -122,10 +121,55 @@ def high_card(bet):
       return -bet
 
 
+# Basic Roulette game: Player bets whether wheel will land on a speific number, 00, 0, even, or odd
+def roulette(bet, call):
+
+  # Check that player has enough money to place bet
+  if bet > money:
+    print("ERROR: You do not have enough money to place bet!")
+    return 0
+
+  # Spin Roulette Wheel
+  print("Spinning wheel...")
+  result = random.randint(1,38)
+
+  # WIN - Wheel lands on 00 (pays 35 to 1)
+  if call == 00 and result == 38:
+    print(f"WHEEL LANDED ON '00'\nYou win ${bet * 35}")
+    return bet * 35
+
+  # WIN - Wheel lands on 0 (pays 35 to 1)
+  elif call == 0 and result == 37:
+    print(f"WHEEL LANDED ON '0'\nYou win ${bet * 35}")
+    return bet * 35
+
+  # WIN - Wheel lands on even number
+  elif call == "even" and result % 2 == 0:
+    print(f"WHEEL LANDED ON EVEN #{result}\nYou win ${bet}")
+    return bet
+
+  # WIN - Wheel lands on odd number
+  elif call == "odd" and result % 2 == 1:
+    print(f"WHEEL LANDED ON ODD #{result}\nYou win ${bet}")
+    return bet
+
+  # WIN - Wheel lands on called number (pays 35 to 1)
+  elif call == result:
+    print(f"WHEEL LANDED ON #{result}\nYou win ${bet * 35}")
+    return bet * 35
+
+  # LOSS - Wheel does not land on the called position
+  else:
+    print(f"WHEEL LANDED ON #{result}\nSorry, you lose ${bet}")
+    return -bet
+
+
+
 # Play games!
 money += flip_coin(30, "heads")
 money += cho_han(10, "even")
 money += high_card(30)
+money += roulette(30, 2)
 
 print(f"Your total amount of money is ${money}")
 
