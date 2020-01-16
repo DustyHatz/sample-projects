@@ -11,7 +11,7 @@ import random
 money = 100
 
 
-# Coin Flip game
+# Coin Flip game: Player bets on heads or tails
 def flip_coin(bet, call):
 
   # Check that player has enough money to place bet
@@ -48,7 +48,8 @@ def flip_coin(bet, call):
       print(f"LANDED ON TAILS\nSorry, you lost ${bet}")
       return -bet
 
-    
+
+# Cho Han game: Player bets on whether the result of dice roll is even or odd   
 def cho_han(bet, call):
   
   # Check that player has enough money to place bet
@@ -85,8 +86,46 @@ def cho_han(bet, call):
       return -bet
 
 
+# High Card game: Both players pick a card out of a single deck. Highest card wins.
+def high_card(bet):
 
+  # Check that player has enough money to place bet
+  if bet > money:
+    print("ERROR: You do not have enough money to place bet!")
+
+  else:
+
+    # Create deck of cards
+    deck = list(range(1, 53))
+
+    # Simulate two players picking one card out of the deck
+    print("Picking cards...")
+
+    # First player picks a card
+    player = random.choice(deck)
+
+    # Update deck minus the first player's card
+    deck.remove(player)
+    new_deck = deck
+
+    # Second player picks a card
+    cpu = random.choice(new_deck)
+
+    # WIN - Player has a higher card
+    if player > cpu:
+      print(f"YOUR CARD: {player}\nOPPONENT CARD: {cpu}\nYou win ${bet}")
+      return bet
+
+    # LOSE - Player has the lower card
+    else:
+      print(f"YOUR CARD: {player}\nOPPONENT CARD: {cpu}\nYou lose ${bet}")
+      return -bet
+
+
+# Play games!
 money += flip_coin(30, "heads")
 money += cho_han(10, "even")
+money += high_card(30)
+
 print(f"Your total amount of money is ${money}")
 
