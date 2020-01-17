@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# This program includes many functions each representing a game of chance
+# This program includes different functions each representing a game of chance
 #-------------------------------------------------------------------------
 
 
@@ -13,16 +13,14 @@ money = 100
 
 # Coin Flip game: Player bets on heads or tails
 def flip_coin(bet, call):
-
+  print("Playing Coin Flip...")
   # Check that player has enough money to place bet
-  if bet > money:
-    print("ERROR: You do not have enough money to place bet!")
+  bet_valid = isinstance(bet, int) and bet <= money and bet > 0
   
-  # Check that player call is either heads or tails
-  elif call.lower() != "heads" and call.lower() != "tails":
-    print("ERROR: Must call 'heads' or 'tails'.")
-
-  else:
+  # Check that player places a bet greater than 0 and calls heads or tails
+  call_valid = isinstance(call, str) and call.lower() == "heads" or call.lower() == "tails"
+  
+  if bet_valid and call_valid:
     # Flip coin
     flip = random.randint(1,2)
     print(f"Flipping coin...you called {call}...")
@@ -48,19 +46,24 @@ def flip_coin(bet, call):
       print(f"LANDED ON TAILS\nSorry, you lost ${bet}")
       return -bet
 
+  else:
+    print("ERROR: Invalid bet/call or not enough money!")
+    return 0
+
+
 
 # Cho Han game: Player bets on whether the result of dice roll is even or odd   
 def cho_han(bet, call):
-  
+
+  print("Playing Cho Han...")
+
   # Check that player has enough money to place bet
-  if bet > money:
-    print("ERROR: You do not have enough money to place bet!")
+  bet_valid = isinstance(bet, int) and bet <= money and bet > 0
   
-  # Check that player call is either odd or even
-  elif call.lower() != "odd" and call.lower() != "even":
-    print("ERROR: Must call 'odd' or 'even'.")
+  # Check that player places a bet greater than 0 and calls heads or tails
+  call_valid = isinstance(call, str) and call.lower() == "even" or call.lower() == "odd"
   
-  else:
+  if bet_valid and call_valid:
     # Roll the dice
     roll = random.randint(1,6) + random.randint(1,6)
     print(f"Rolling dice...you called {call}...")
@@ -85,20 +88,22 @@ def cho_han(bet, call):
       print(f"ROLL IS ODD\nSorry, you lost ${bet}")
       return -bet
 
+  else:
+    print("ERROR: Invalid bet/call or not enough money!")
+    return 0
 
 # High Card game: Both players pick a card out of a single deck. Highest card wins.
 def high_card(bet):
 
-  # Check that player has enough money to place bet
-  if bet > money:
-    print("ERROR: You do not have enough money to place bet!")
+  print("Playing High Card...")
 
-  else:
+  # Check that player has enough money to place bet
+  bet_valid = isinstance(bet, int) and bet <= money and bet > 0
+
+  if bet_valid:
+
     # Create deck of cards
     deck = list(range(1, 53))
-
-    # Simulate two players picking one card out of the deck
-    print("Picking cards...")
 
     # First player picks a card
     player = random.choice(deck)
@@ -120,56 +125,96 @@ def high_card(bet):
       print(f"YOUR CARD: {player}\nOPPONENT CARD: {cpu}\nYou lose ${bet}")
       return -bet
 
+  else:
+    print("ERROR: Invalid bet/call or not enough money!")
+    return 0
+
 
 # Basic Roulette game: Player bets whether wheel will land on a speific number, 00, 0, even, or odd
 def roulette(bet, call):
 
-  # Check that player has enough money to place bet
-  if bet > money:
-    print("ERROR: You do not have enough money to place bet!")
+  print("Playing Roulette...")
+
+  # Check that player has enough money to place bet and that bet is 1 or more
+  bet_valid = isinstance(bet, int) and bet <= money and bet > 0
+
+  if bet_valid:
+    #If call is an integer
+    if type(call) == int and bet_valid:
+
+      print(f"You called {call}...")
+
+      # Check that player places a bet greater than 0 and calls heads or tails
+      if call == 00 or call == 0 or call in range(1, 36):
+        
+        # Spin Roulette Wheel
+        result = random.randint(1,38)
+
+        # WIN - Wheel lands on 00 (pays 35 to 1)
+        if call == 00 and result == 38:
+          print(f"WHEEL LANDED ON '00'\nYou win ${bet * 35}")
+          return bet * 35
+
+        # WIN - Wheel lands on 0 (pays 35 to 1)
+        elif call == 0 and result == 37:
+          print(f"WHEEL LANDED ON '0'\nYou win ${bet * 35}")
+          return bet * 35
+
+        # WIN - Wheel lands on called number (pays 35 to 1)
+        elif call == result:
+          print(f"WHEEL LANDED ON #{result}\nYou win ${bet * 35}")
+          return bet * 35
+
+        # LOSS - Wheel does not land on the called position
+        else:
+          print(f"WHEEL LANDED ON #{result}\nSorry, you lose ${bet}")
+          return -bet
+      
+      else:
+        print("ERROR: Call must be 0, 00, or 1-36")
+        return 0
+
+    # If call is a string
+    elif type(call) == str and bet_valid:
+
+      # Spin Roulette Wheel
+      result = random.randint(1,38)
+
+      # Convert call to lowercase for future checking
+      call = call.lower()
+
+      # WIN - Wheel lands on even number
+      if call == "even" and result % 2 == 0:
+        print(f"You called {call}...")
+        print(f"WHEEL LANDED ON EVEN #{result}\nYou win ${bet}")
+        return bet
+
+      # WIN - Wheel lands on odd number
+      elif call == "odd" and result % 2 == 1:
+        print(f"You called {call}...")
+        print(f"WHEEL LANDED ON ODD #{result}\nYou win ${bet}")
+        return bet
+
+      elif call != "odd" or call != "even":
+        print("ERROR: Call must be 'even' or 'odd'")
+        return 0
+
+      else:
+          print(f"WHEEL LANDED ON #{result}\nSorry, you lose ${bet}")
+          return -bet
+
+  else:
+    print("ERROR: Invalid bet or not enough money!")
     return 0
 
-  # Spin Roulette Wheel
-  print("Spinning wheel...")
-  result = random.randint(1,38)
-
-  # WIN - Wheel lands on 00 (pays 35 to 1)
-  if call == 00 and result == 38:
-    print(f"WHEEL LANDED ON '00'\nYou win ${bet * 35}")
-    return bet * 35
-
-  # WIN - Wheel lands on 0 (pays 35 to 1)
-  elif call == 0 and result == 37:
-    print(f"WHEEL LANDED ON '0'\nYou win ${bet * 35}")
-    return bet * 35
-
-  # WIN - Wheel lands on even number
-  elif call == "even" and result % 2 == 0:
-    print(f"WHEEL LANDED ON EVEN #{result}\nYou win ${bet}")
-    return bet
-
-  # WIN - Wheel lands on odd number
-  elif call == "odd" and result % 2 == 1:
-    print(f"WHEEL LANDED ON ODD #{result}\nYou win ${bet}")
-    return bet
-
-  # WIN - Wheel lands on called number (pays 35 to 1)
-  elif call == result:
-    print(f"WHEEL LANDED ON #{result}\nYou win ${bet * 35}")
-    return bet * 35
-
-  # LOSS - Wheel does not land on the called position
-  else:
-    print(f"WHEEL LANDED ON #{result}\nSorry, you lose ${bet}")
-    return -bet
-
-
-
 # Play games!
-money += flip_coin(30, "heads")
+money += flip_coin(1, "tails")
+print()
 money += cho_han(10, "even")
+print()
 money += high_card(30)
-money += roulette(30, 2)
+print()
+money += roulette(10, "odd")
 
 print(f"Your total amount of money is ${money}")
 
