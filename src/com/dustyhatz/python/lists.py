@@ -75,7 +75,6 @@ print("-" * 40)
 # Takes in a list
 # Returns the middle element if number of elements is odd, otherwise returns the average of the two middle elements
 def middle_element(lst):
-  
   if len(lst) % 2 != 0:
     middle = int(len(lst)/2)
     return lst[middle]
