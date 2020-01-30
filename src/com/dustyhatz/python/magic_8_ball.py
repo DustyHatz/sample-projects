@@ -10,7 +10,7 @@ responses = {1 : "Absolutely!", 2 : "Maybe.", 3 : "Ask again later.",
 7 : "Most likely.", 8 : "My sources say no.", 9 : "All signs point to yes.", 
 10 : "Very doubtful.", 11 : "Without a doubt.", 12 : "You may rely on it.", 
 13 : "Concentrate and ask again.", 14 : "Maybe, but probably not.", 
-15 : "I don't understand the question and I won't responde to it."
+15 : "I don't understand the question and I won't respond to it."
 }
 
 
@@ -25,9 +25,8 @@ def ask_magic_8_ball():
 
 		print(response)
 
-	else:
-		print('Must enter a yes or no question that ends with "?"')
-		ask_question()
+	print('Must enter a yes or no question that ends with "?"')
+	ask_magic_8_ball()
 
 
 # Ask question
