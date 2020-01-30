@@ -7,7 +7,7 @@ import random
 # Dict of possible Magic 8 Ball responses
 responses = {1 : "Absolutely!", 2 : "Maybe.", 3 : "Ask again later.", 
 4 : "Better not tell you now.", 5 : "Don’t count on it.", 6 : "It is certain.", 
-7 : "Most likely.", 8 : "My sources say no.", 9 : "Signs point to yes.", 
+7 : "Most likely.", 8 : "My sources say no.", 9 : "All signs point to yes.", 
 10 : "Very doubtful.", 11 : "Without a doubt.", 12 : "You may rely on it.", 
 13 : "Concentrate and ask again.", 14 : "Maybe, but probably not.", 
 15 : "I don't understand the question and I won't responde to it."
