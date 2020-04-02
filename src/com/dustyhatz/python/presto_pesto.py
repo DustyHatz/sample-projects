@@ -1,5 +1,5 @@
 # Practice building a system of classes to create a working structure for a business.
-# In this case, two restuarants "Basta Fazoolin' With My Heart" and "Take a' Arepa"
+# In this case, two restuarants "Presto Pesto" and "Mini Panini"
 
 from datetime import time
 
@@ -62,7 +62,7 @@ class Menu:
     return f"Total bill: ${total_price:.2f}"
   
   
-# Basta Store
+# Presto Pesto Store
 
 # Brunch menu
 brunch = Menu("brunch", {
@@ -94,19 +94,19 @@ flagship_store = Franchise("1232 West End Road", menus)
 new_installment = Franchise("12 East Mulberry Street", menus)
 
 # Create a new Business
-basta = Business("Basta Fazoolin' with my Heart", [flagship_store, new_installment])
+basta = Business("Presto Pesto", [flagship_store, new_installment])
 
 
-# Arepa Store
+# Mini Panini Store
 
-# Create Menu for Take a' Arepa store
-arepas_menu = Menu("Take a' Arepa", {
-  'arepa pabellon': 7.00, 'pernil arepa': 8.50, 'guayanes arepa': 8.00, 'jamon arepa': 7.50
+# Create Menu for Mini Panini store
+panini_menu = Menu("Take a' Arepa", {
+  'panini pabellon': 7.00, 'pernil panini': 8.50, 'guayanes panini': 8.00, 'jamon panini': 7.50
 }, 1000, 2000)
 
 # Create new Franchise for Take a' Arepa store
-arepas_place = Franchise("189 Fitzgerald Avenue", arepas_menu)
+panini_place = Franchise("189 Fitzgerald Avenue", panini_menu)
 
 # Create a Business for Take a' Arepa
-arepa = Business("Take a' Arepa", [arepas_place])
+panini = Business("Take a' Arepa", [panini_place])
 
