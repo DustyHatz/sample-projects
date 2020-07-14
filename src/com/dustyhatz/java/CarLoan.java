@@ -12,7 +12,7 @@ public class CarLoan {
         int interestRate = 5; //percent
         int downPayment = 200; //dollars
 
-        // Ensure user 
+        // Ensure the loan length and interest rate are valid
         if (loanLength <= 0 || interestRate <= 0) {
 
             System.out.println("Error! You must take out a valid car loan.");
