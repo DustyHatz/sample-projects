@@ -1,11 +1,15 @@
 // Example of using an ArrayList to create, and edit a desert island song playlist.
+// By: Dustin Hatzenbuhler
+
 
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 class Playlist {
 
     public static void main(String[] args) {
+
         // Create and initialize the playlist
         ArrayList<String> desertIslandPlaylist = new ArrayList<String>();
 
@@ -22,6 +26,7 @@ class Playlist {
 
         // Print the playlist and the size of the playlist
         System.out.println(desertIslandPlaylist);
+
         System.out.println("Size of playlist: " + desertIslandPlaylist.size());
 
         // Remove songs
@@ -35,6 +40,7 @@ class Playlist {
 
         // Swap the first and second songs in the playlist
         Collections.swap(desertIslandPlaylist, 0, 1);
+        
         // Print the final playlist
         System.out.println(desertIslandPlaylist);
 
